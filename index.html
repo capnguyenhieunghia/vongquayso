@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quay Số Trúng Thưởng</title>
+    <style>
+        .container {
+            text-align: center;
+            border-radius: 12px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+
+        .prizes {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .prize {
+            margin: 10px;
+            text-align: center;
+            flex: 1 1 150px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .prize img {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .prize img:hover {
+            transform: scale(1.1);
+        }
+
+        .numbers {
+            font-size: 2em;
+            margin-top: 10px;
+            color: navy;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: navy;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.5);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .numbers {
+                font-size: 1.5em;
+            }
+
+            button {
+                width: 100%;
+                font-size: 1em;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            height: 150px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            word-wrap: break-word;
+            /* Cho phép xuống hàng */
+            max-width: 150px;
+            /* Giới hạn chiều rộng ô */
+            font-size: 18px;
+        }
+
+        th {
+            background-color: navy;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+
+            th,
+            td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            th {
+                background-color: #333;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quayso">
+        <div class="container">
+            <div class=""
+                style="display: flex; justify-content: center; width: 100%; gap: 10px; flex-direction: column;align-items: center;">
+                <h2 style="color: navy; text-align: center;">TRƯỜNG CAO ĐẲNG CÔNG NGHỆ THÔNG TIN THÀNH PHỐ HỒ CHÍ MINH
+                </h2>
+                <img src="./image/logoitc1.png" alt="" width="80px" height="80px">
+            </div>
+            <h1 style="color: navy;">QUAY SỐ TRÚNG THƯỞNG</h1>
+            <div class="prizes">
+                <div class="prize">
+                    <img src="./image/balo.png" alt="Quà 1" width="120px" height="120px">
+                    <div class="numbers" id="number1">000</div>
+                </div>
+                <div class="prize">
+                    <img src="./image/binhnuoc.png" alt="Quà 2">
+                    <div class="numbers" id="number2">000</div>
+                </div>
+                <div class="prize">
+                    <img src="./image/gaubong.png" alt="Quà 3">
+                    <div class="numbers" id="number3">000</div>
+                </div>
+                <div class="prize">
+                    <img src="./image/quat.png" alt="Quà 4">
+                    <div class="numbers" id="number4">000</div>
+                </div>
+                <div class="prize">
+                    <img src="./image/Butbi.png" alt="Quà 5">
+                    <div class="numbers" id="number5">000</div>
+                </div>
+            </div>
+            <button onclick="generateNumbers()">Quay Số</button>
+
+            <!-- Thêm âm thanh -->
+            <audio id="spinSound" src="./amthanhquayso.mp3" preload="auto"></audio>
+        </div>
+    </div>
+    <!-- bảng -->
+    <table>
+        <thead>
+            <tr>
+                <th>Balo ITC</th>
+                <th>Bình nước ITC</th>
+                <th>Gấu bông ITC</th>
+                <th>Quạt ITC</th>
+                <th>Bút ITC</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>111. 222. 123</td>
+                <td>456. 789. 333. 666</td>
+                <td>888. 247. 777. 899</td>
+                <td>262. 562. 892. 013. 573. 271. 896. 633. 603. 239. 922. 123. 509. 786. 411. 012. 065. 806. 892. 632.
+                    999. 011. 342. 045. 701. 098. 787. 112. 114. 155. 811. 599</td>
+                <td>251. 321. 530. 630. 227. 960. 431. 632. 324. 329. 221. 123. 789. 532 142. 153. 431. 709. 067. 321.
+                    023. 784. 235. 127. 282. 033. 521. 726. 102. 199. 499. 321</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function generateRandomNumber() {
+            let number;
+            const invalidNumbers = [111, 222, 123, 456, 789, 333, 666, 888, 247, 777, 899];
+
+            do {
+                number = Math.floor(Math.random() * 700) + 1;
+            } while (invalidNumbers.includes(number));
+
+            return number;
+        }
+
+        function animateNumber(element, target, delay) {
+            setTimeout(() => {
+                let start = 0;
+                const duration = 3000;
+                const stepTime = Math.abs(Math.floor(duration / target));
+                const increment = target / (duration / stepTime);
+
+                const interval = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        clearInterval(interval);
+                        start = target;
+                    }
+                    element.textContent = String(Math.round(start)).padStart(3, '0');
+                }, stepTime);
+            }, delay);
+        }
+
+        function generateNumbers() {
+            const numbers = [];
+            const spinSound = document.getElementById('spinSound');
+            spinSound.play();
+
+            for (let i = 0; i < 5; i++) { // Chỉnh sửa để chỉ tạo 5 số
+                const randomNumber = generateRandomNumber();
+                numbers.push(randomNumber);
+                animateNumber(document.getElementById(`number${i + 1}`), randomNumber, i * 2500);
+            }
+
+            setTimeout(() => {
+                spinSound.pause();
+                spinSound.currentTime = 0;
+            }, 20000);
+        }
+    </script>
+</body>
+
+</html>
