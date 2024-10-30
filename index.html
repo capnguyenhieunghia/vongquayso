@@ -1,236 +1,252 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quay Số Trúng Thưởng</title>
-    <style>
-        .container {
-            text-align: center;
-            border-radius: 12px;
-            width: 100%;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            color: #343a40;
-            margin-bottom: 20px;
-        }
-
-        .prizes {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-
-        .prize {
-            margin: 10px;
-            text-align: center;
-            flex: 1 1 150px;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            border-radius: 10px;
-            padding: 10px;
-        }
-
-        .prize img {
-            width: 120px;
-            height: 120px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .prize img:hover {
-            transform: scale(1.1);
-        }
-
-        .numbers {
-            font-size: 2em;
-            margin-top: 10px;
-            color: navy;
-            font-weight: bold;
-        }
-
-        button {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            background-color: navy;
-            color: white;
-            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.5);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 600px) {
-            .numbers {
-                font-size: 1.5em;
-            }
-
-            button {
-                width: 100%;
-                font-size: 1em;
-            }
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            height: 150px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        th,
-        td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            word-wrap: break-word;
-            /* Cho phép xuống hàng */
-            max-width: 150px;
-            /* Giới hạn chiều rộng ô */
-            font-size: 18px;
-        }
-
-        th {
-            background-color: navy;
-            color: white;
-        }
-
-        @media (max-width: 600px) {
-
-            th,
-            td {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            th {
-                background-color: #333;
-            }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vòng quay ITC - Trải nghiệm thú vị với các phần thưởng hấp dẫn." />
+    <meta name="keywords" content="Vòng quay, ITC, phần thưởng, trò chơi, giải trí" />
+    <meta name="author" content="Cao đẳng Công nghệ thông tin TP. Hồ Chí Minh" />
+    <title>Vòng quay ITC</title>
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
 </head>
+<style>
+    :root {
+        --size-wheel: 25rem;
+    }
+
+    body {
+background-image: url('./back2.png');
+background-repeat: no-repeat;
+background-size: cover;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .msg {
+        width: 50%;
+        margin: 0 auto;
+        min-height: 4rem;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 0.5rem;
+        text-transform: capitalize;
+        color: black;
+        /* border: solid black 1px; */
+        background-color: azure;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        transition: ease-in-out 3s;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
+
+    ul {
+        position: relative;
+        padding: 0;
+        margin: 1rem 0;
+        width: var(--size-wheel);
+        height: var(--size-wheel);
+        border: 10px solid rgb(0, 12, 184);
+        border-radius: 50%;
+        list-style: none;
+        overflow: hidden;
+        transition: cubic-bezier(0.075, 0.8, 0.2, 1) 7s;
+    }
+
+    span {
+        display: inline-block;
+        position: relative;
+        padding: 0.5rem;
+    }
+
+    span::before {
+        content: '';
+        position: absolute;
+        top: 0rem;
+        left: 50%;
+        border-left: 2rem solid transparent;
+        border-right: 2rem solid transparent;
+        border-top: 4rem solid navy;
+        z-index: 2;
+        transform: translateX(-50%);
+        animation: arrow ease-out 0.6s infinite;
+    }
+
+    @keyframes arrow {
+        0% {
+            top: -2rem;
+        }
+
+        80% {
+            top: 0;
+        }
+
+        100% {
+            top: -1.5rem;
+        }
+    }
+
+    span::after {
+        content: '';
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(255, 255, 255);
+        border-radius: 50%;
+    }
+
+    li {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        transform-origin: 0% 100%;
+    }
+
+    .text {
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        left: -100%;
+        width: 200%;
+        height: 200%;
+        display: block;
+        text-align: center;
+        padding-top: 1.7rem;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .text>b {
+        display: inline-block;
+        word-break: break-word;
+        max-width: 20%;
+    }
+
+    .text-1 {
+        background-color: rgb(0, 89, 255);
+    }
+
+    .text-2 {
+        background-color: rgb(126, 182, 255);
+    }
+
+    @keyframes blink {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .msg.blink {
+        animation: blink 1s infinite;
+    }
+
+    .main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    button {
+        display: inline-block;
+        text-align: center;
+        border: 0;
+        background-color: navy;
+        color: #fff;
+        font-size: 1.5rem;
+        border-radius: 4rem;
+        padding: 0.5rem 1.5rem;
+        width: auto;
+        cursor: pointer;
+        outline: none;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            display: none;
+        }
+    }
+
+    .tt {
+        position: absolute;
+        bottom: 4%;
+        left: 1%;
+    }
+
+    .qr {
+        width: 150px;
+        height: 150px;
+    }
+
+    .qr img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .maqr {
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+
+    .ttd {
+        position: relative;
+        display: flex;
+        height: 100px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ttd .logo {
+        position: absolute;
+        left: 10%;
+        top: 10%;
+        height: 100%;
+    }
+
+    .logo img {
+        height: 90px;
+        width: 90px;
+    }
+</style>
 
 <body>
-    <div class="quayso">
-        <div class="container">
-            <div class=""
-                style="display: flex; justify-content: center; width: 100%; gap: 10px; flex-direction: column;align-items: center;">
-                <h2 style="color: navy; text-align: center;">TRƯỜNG CAO ĐẲNG CÔNG NGHỆ THÔNG TIN THÀNH PHỐ HỒ CHÍ MINH
-                </h2>
-                <img src="./image/logoitc1.png" alt="" width="80px" height="80px">
-            </div>
-            <h1 style="color: navy;">QUAY SỐ TRÚNG THƯỞNG</h1>
-            <div class="prizes">
-                <div class="prize">
-                    <img src="./image/balo.png" alt="Quà 1" width="120px" height="120px">
-                    <div class="numbers" id="number1">000</div>
-                </div>
-                <div class="prize">
-                    <img src="./image/binhnuoc.png" alt="Quà 2">
-                    <div class="numbers" id="number2">000</div>
-                </div>
-                <div class="prize">
-                    <img src="./image/gaubong.png" alt="Quà 3">
-                    <div class="numbers" id="number3">000</div>
-                </div>
-                <div class="prize">
-                    <img src="./image/quat.png" alt="Quà 4">
-                    <div class="numbers" id="number4">000</div>
-                </div>
-                <div class="prize">
-                    <img src="./image/Butbi.png" alt="Quà 5">
-                    <div class="numbers" id="number5">000</div>
-                </div>
-            </div>
-            <button onclick="generateNumbers()">Quay Số</button>
-
-            <!-- Thêm âm thanh -->
-            <audio id="spinSound" src="./amthanhquayso.mp3" preload="auto"></audio>
-        </div>
+    <div class="ttd">
+        <div class="logo"></div>
+        <h2 style="text-align: center; margin: 15px 0px; color: navy;"></h2>
     </div>
-    <!-- bảng -->
-    <table>
-        <thead>
-            <tr>
-                <th>Balo ITC</th>
-                <th>Bình nước ITC</th>
-                <th>Gấu bông ITC</th>
-                <th>Quạt ITC</th>
-                <th>Bút ITC</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>111. 222. 123</td>
-                <td>456. 789. 333. 666</td>
-                <td>888. 247. 777. 899</td>
-                <td>262. 562. 892. 013. 573. 271. 896. 633. 603. 239. 922. 123. 509. 786. 411. 012. 065. 806. 892. 632.
-                    999. 011. 342. 045. 701. 098. 787. 112. 114. 155. 811. 599</td>
-                <td>251. 321. 530. 630. 227. 960. 431. 632. 324. 329. 221. 123. 789. 532 142. 153. 431. 709. 067. 321.
-                    023. 784. 235. 127. 282. 033. 521. 726. 102. 199. 499. 321</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <script>
-        function generateRandomNumber() {
-            let number;
-            const invalidNumbers = [111, 222, 123, 456, 789, 333, 666, 888, 247, 777, 899];
-
-            do {
-                number = Math.floor(Math.random() * 700) + 1;
-            } while (invalidNumbers.includes(number));
-
-            return number;
-        }
-
-        function animateNumber(element, target, delay) {
-            setTimeout(() => {
-                let start = 0;
-                const duration = 3000;
-                const stepTime = Math.abs(Math.floor(duration / target));
-                const increment = target / (duration / stepTime);
-
-                const interval = setInterval(() => {
-                    start += increment;
-                    if (start >= target) {
-                        clearInterval(interval);
-                        start = target;
-                    }
-                    element.textContent = String(Math.round(start)).padStart(3, '0');
-                }, stepTime);
-            }, delay);
-        }
-
-        function generateNumbers() {
-            const numbers = [];
-            const spinSound = document.getElementById('spinSound');
-            spinSound.play();
-
-            for (let i = 0; i < 5; i++) { // Chỉnh sửa để chỉ tạo 5 số
-                const randomNumber = generateRandomNumber();
-                numbers.push(randomNumber);
-                animateNumber(document.getElementById(`number${i + 1}`), randomNumber, i * 2500);
-            }
-
-            setTimeout(() => {
-                spinSound.pause();
-                spinSound.currentTime = 0;
-            }, 20000);
-        }
-    </script>
+   
+    <main>
+        <section class="main">
+            <span>
+                <ul class="wheel"></ul>
+            </span>
+            <button class="btn--wheel">Quay thưởng</button>
+        </section>
+        <h2 class="msg"></h2>
+    </main>
+    <script src="main.js"></script>
 </body>
 
 </html>
